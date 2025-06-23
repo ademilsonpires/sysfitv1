@@ -274,7 +274,7 @@ async def update_usuario_cadastro_completo(cpf_cnpj: str, usr_id: int, usuario_d
         raise HTTPException(status_code=500, detail=f"Erro ao atualizar usuário: {str(e)}")
 ############### /update de Usuarios #####################
 
-@app.post("/criar_banco/", tags=["Credenciamento"], summary="Cria um novo banco de dados")
+@app.post("/criar_banco/", tags=["Credenciamento"], summary="Cria um novo banco de dados", include_in_schema=False)
 async def criar_banco(cpf_cnpj: str):
     try:
         criar_banco_e_restaurar_dump(
@@ -303,7 +303,7 @@ class AdmCreateRequest(BaseModel):
 
 
 # Endpoint para cadastro de administrador
-@app.post("/cadastrar-administrador", tags=["Cadastre-se"], summary="Cria novo cadastro de cliente")
+@app.post("/cadastrar-administrador", tags=["Cadastre-se"], summary="Cria novo cadastro de cliente", include_in_schema=False)
 async def cadastrar_administrador(request: AdmCreateRequest):
     try:
         # Preparar os dados para inserção

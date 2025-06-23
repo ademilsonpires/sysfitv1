@@ -61,7 +61,7 @@ def criar_banco_e_restaurar_dump(
         dump_file_path: str,
         mysql_user: str,
         mysql_password: str,
-        mysql_host: str = "localhost",
+        mysql_host: str = MYSQL_HOST,
         mysql_port: int = 3306
 ):
     """
@@ -145,7 +145,7 @@ def criar_banco_e_restaurar_dump_2(
         dump_file_path: str,
         mysql_user: str,
         mysql_password: str,
-        mysql_host: str = "localhost",
+        mysql_host: str = MYSQL_HOST,
         mysql_port: int = 3306,
         novo_email: str = None,  # Novo parâmetro para o email
         nova_senha: str = None   # Novo parâmetro para a senha
@@ -370,8 +370,8 @@ def inserir_adm(usuario_data: dict):
         # **Aqui fazemos as alterações necessárias para o banco principal:**
         # - Define o 'usuario' como 'root'
         # - Define a 'senha' como uma string vazia para a tabela 'adm' (no ambiente de desenvolvimento)
-        usuario_data["usuario"] = 'root'  # Valor fixo para o campo 'usuario'
-        usuario_data["senha"] = ''  # Senha vazia para o banco principal 'adm'
+        usuario_data["usuario"] = MYSQL_USER  # Valor fixo para o campo 'usuario'
+        usuario_data["senha"] = MYSQL_PASSWORD  # Senha vazia para o banco principal 'adm'
 
         # Criar o objeto Adm
         novo_adm = Adm(**usuario_data)

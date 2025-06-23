@@ -9,7 +9,7 @@ from models.conexao_cli import get_engine_cliente, get_session_cliente
 from models.adm import *
 
 
-def get_session(db_name, user, password, host="localhost") -> Session:
+def get_session(db_name, user, password, host=MYSQL_HOST) -> Session:
     """
     Cria e retorna uma sessão SQLAlchemy para o banco de dados especificado.
 
@@ -27,7 +27,7 @@ def get_session(db_name, user, password, host="localhost") -> Session:
     return session
 
 
-def get_usuario(db_name, user, password, usr_id, host="localhost"):
+def get_usuario(db_name, user, password, usr_id, host=MYSQL_HOST):
     """
     Busca um usuário pelo ID na base do cliente.
 
@@ -61,7 +61,7 @@ def get_usuario(db_name, user, password, usr_id, host="localhost"):
         session.close()
 
 
-def get_usuarios(db_name, user, password, skip=0, limit=100, host="localhost"):
+def get_usuarios(db_name, user, password, skip=0, limit=100, host=MYSQL_HOST):
     """
     Retorna uma lista de usuários paginada da base do cliente.
 
@@ -96,7 +96,7 @@ def get_usuarios(db_name, user, password, skip=0, limit=100, host="localhost"):
     finally:
         session.close()
 
-def create_usuario(db_name, user, password, usuario_data: dict, host="localhost"):
+def create_usuario(db_name, user, password, usuario_data: dict, host=MYSQL_HOST):
     """
     Cria um novo usuário na base do cliente, criptografando a senha e gerando token.
 
@@ -171,7 +171,7 @@ def create_usuario(db_name, user, password, usuario_data: dict, host="localhost"
         session.close()
 
 
-def update_usuario(db_name, user, password, usr_id, usuario_data: dict, host="localhost"):
+def update_usuario(db_name, user, password, usr_id, usuario_data: dict, host=MYSQL_HOST):
     """
     Atualiza os dados de um usuário existente na base do cliente.
 
@@ -249,7 +249,7 @@ def update_usuario(db_name, user, password, usr_id, usuario_data: dict, host="lo
     finally:
         session.close()
 
-def update_usuario_dinamico(db_name, user, password, usr_id, campo_valor: dict, host="localhost"):
+def update_usuario_dinamico(db_name, user, password, usr_id, campo_valor: dict, host=MYSQL_HOST):
     """
     Atualiza um campo específico de um usuário existente na base do cliente.
 
@@ -298,7 +298,7 @@ def update_usuario_dinamico(db_name, user, password, usr_id, campo_valor: dict, 
         session.close()
 
 
-def delete_usuario(db_name, user, password, usr_id, host="localhost"):
+def delete_usuario(db_name, user, password, usr_id, host=MYSQL_HOST):
     """
     Remove um usuário da base do cliente.
 
@@ -320,7 +320,7 @@ def delete_usuario(db_name, user, password, usr_id, host="localhost"):
     finally:
         session.close()
 
-def update_usuario_dinamico(db_name, user, password, usr_id, campos_valores: dict, host="localhost"):
+def update_usuario_dinamico(db_name, user, password, usr_id, campos_valores: dict, host=MYSQL_HOST):
     """
     Atualiza campos dinâmicos de um usuário existente na base do cliente.
 
@@ -362,7 +362,7 @@ def update_usuario_dinamico(db_name, user, password, usr_id, campos_valores: dic
     finally:
         session.close()
 
-def get_usuario_por_token(db_name, user, password, token, host="localhost"):
+def get_usuario_por_token(db_name, user, password, token, host=MYSQL_HOST):
     """
     Busca um usuário pelo token na base do cliente.
 
